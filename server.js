@@ -15,7 +15,12 @@ connectCloudinary();
 
 // middlewares 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: [
+        "https://prescripto-frontend-blue.vercel.app/",
+        "https://prescripto-admin-five-theta.vercel.app/"
+    ]
+  }))
 
 // api endpoints 
 app.use("/api/admin", adminRouter);
