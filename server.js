@@ -15,26 +15,27 @@ connectCloudinary();
 
 // middlewares 
 app.use(express.json())
+app.use(cors())
 
 
-const allowedOrigins = [
-    "https://prescripto-frontend-blue.vercel.app",
-    "https://prescripto-admin-five-theta.vercel.app"
-];
+// const allowedOrigins = [
+//     "https://prescripto-frontend-blue.vercel.app",
+//     "https://prescripto-admin-five-theta.vercel.app"
+// ];
 
 // simple allow-list
-app.use(cors({
-    origin: function (origin, callback) {
-        // allow non-browser requests (e.g. curl) which have no origin
-        if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            callback(new Error('CORS denied'));
-        }
-    },
-    credentials: true, // if you need cookies/auth
-}));
+// app.use(cors({
+//     origin: function (origin, callback) {
+//         // allow non-browser requests (e.g. curl) which have no origin
+//         if (!origin) return callback(null, true);
+//         if (allowedOrigins.indexOf(origin) !== -1) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('CORS denied'));
+//         }
+//     },
+//     credentials: true, // if you need cookies/auth
+// }));
 
 // api endpoints 
 app.use("/api/admin", adminRouter);
